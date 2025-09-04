@@ -24,3 +24,6 @@ python3 json3_to_vtt.py -l ru subs.json
 ## Possible issues
 ### Incorrect format
 Make sure the input file is in the correct format, a quick check is that it must have the following JSON key at the root level: `"wireMagic": "pb3"`
+
+### Empty output VTT file
+YouTube can sometimes "shadowban" you from downloading translated subs by serving you a json3 file with no actual translation. Make sure the original file _actually_ contains the translated text.
