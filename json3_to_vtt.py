@@ -48,12 +48,18 @@ def ms_to_vtt(ms):
 def json3_to_vtt(in_data):
     vtt_data = []
 
-    for evt in in_data["events"]:
+    l = len(in_data["events"])
+    for i, evt in enumerate(in_data["events"]):
         if "dDurationMs" not in evt:
             continue
 
         start = evt["tStartMs"]
         end = start + evt["dDurationMs"]
+
+        # trim overlapping parts
+        if i != l - 1:
+            next_start = in_data["events"][i + 1]["tStartMs"]
+            end = min(end, next_start)
 
         if "segs" in evt:
             msg = ""
