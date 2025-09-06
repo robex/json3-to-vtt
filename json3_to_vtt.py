@@ -22,7 +22,7 @@ Language: {lang_code}
 
 """
 
-    with open(outfile, "w") as f:
+    with open(outfile, "w", encoding='utf-8') as f:
         f.write(vtt_header)
 
         for d in vtt_data:
